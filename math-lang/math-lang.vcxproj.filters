@@ -26,5 +26,8 @@
     <ClInclude Include="tokenizer\tokenizer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="parser\parser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

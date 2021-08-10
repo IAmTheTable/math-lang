@@ -144,6 +144,7 @@
     <ClCompile Include="tokenizer\tokenizer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="parser\parser.hpp" />
     <ClInclude Include="tokenizer\tokenizer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

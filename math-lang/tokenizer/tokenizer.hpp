@@ -4,7 +4,11 @@
 #include <string>
 #include <map>
 
-struct token
+#ifdef EOF
+#undef EOF
+#endif
+
+struct tokenizer
 {
 	enum class token_type
 	{
@@ -13,7 +17,7 @@ struct token
 		unsigned_number,
 		char_quote,
 		str_quote,
-		Not,
+		NOT,
 		add,
 		sub,
 		mult,
@@ -31,32 +35,35 @@ struct token
 		identifier,
 		function,
 		unknown,
+		EOF,
+		EOL,
 	};
 
-	std::map<token_type, char> tokens
+	std::map<token_type, std::string> tokens
 	{
-		{token_type::add, '+'},
-		{token_type::sub, '-'},
-		{token_type::mult, '*'},
-		{token_type::divide, '/'},
+		{token_type::add, "+"},
+		{token_type::sub, "-"},
+		{token_type::mult, "*"},
+		{token_type::divide, "/"},
 
-		{token_type::And, '&'},
-		{token_type::Or, '|'},
-		{token_type::equal, '='},
+		{token_type::And, "&"},
+		{token_type::Or, "|"},
+		{token_type::equal, "="},
 
-		{token_type::left_cur_bracket, '{'},
-		{token_type::right_cur_bracket, '}'},
-		{token_type::left_parenthesis, '('},
-		{token_type::right_parenthesis, ')'},
-		{token_type::left_sq_bracket, '['},
-		{token_type::right_sq_bracket, ']'},
+		{token_type::left_cur_bracket, "{"},
+		{token_type::right_cur_bracket, "}"},
+		{token_type::left_parenthesis, "("},
+		{token_type::right_parenthesis, ")"},
+		{token_type::left_sq_bracket, "["},
+		{token_type::right_sq_bracket, "]"},
 
-		{token_type::str_quote, '"'},
-		{token_type::char_quote, '\''},
+		{token_type::str_quote, "\""},
+		{token_type::char_quote, "\'"},
 
-		{token_type::white_space, ' '},
+		{token_type::white_space, " "},
+		{token_type::EOL, ";"},
 	};
 
-	token(token_type tokentype) {};
+	void token() {};
 
 };
