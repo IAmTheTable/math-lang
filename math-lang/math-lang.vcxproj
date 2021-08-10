@@ -141,6 +141,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="tokenizer\tokenizer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tokenizer\tokenizer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
