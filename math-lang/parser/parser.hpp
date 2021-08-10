@@ -26,14 +26,28 @@ private:
 	bool is_whitespace()
 	{
 		if (code[current_pos] == ' ')
+		{
+			set_token(tokenizer::token_type::white_space);
 			return true;
+		}
 
 		return false;
+	}
+
+	bool is_number()
+	{
+		// shorter for this massive if statement
+		auto x = code[current_pos];
+		if (x == 1 || x == 2 || x == 3 || x == 4 || x == 5 || x == 6 || x == 7 || x == 8 || x == 9 || x == 0)
+			return true;
+		else return false;
 	}
 
 public:
 
 	std::vector<tokenizer::token_type> tokens;
+
+	std::map<std::string, void*> variables;
 
 	bool parse()
 	{
@@ -64,13 +78,27 @@ public:
 									set_token(tokenizer::token_type::number);
 									if (is_whitespace())
 										peak();
+
+									std::string var_name;
+									while (current_token != tokenizer::token_type::white_space)
+									{
+										if (!is_whitespace())
+											var_name += code[current_pos];
+
+										peak();
+									}
+
+									set_token(tokenizer::token_type::identifier);
+
 									if (code[current_pos] == '=')
 									{
 										set_token(tokenizer::token_type::equal);
+
 										peak();
-										while (current_token != tokenizer::token_type::EOL)
+
+										if (is_number())
 										{
-											
+											// now chck whats on the other side of number x = (expr)
 										}
 									}
 								}
