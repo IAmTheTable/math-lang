@@ -96,10 +96,17 @@ public:
 
 										peak();
 
-										if (is_number())
+										while (code[current_pos] != ';') // while its not the end of line
 										{
-											// now chck whats on the other side of number x = (expr)
+											while (is_number())
+											{
+												peak();
+											}
+
+											tokens.emplace_back(tokenizer::token_type::number);
 										}
+
+
 									}
 								}
 							}
